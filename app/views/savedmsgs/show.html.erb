@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @savedmsg.text %>
+</p>
+
+<%= link_to 'Edit', edit_savedmsg_path(@savedmsg) %> |
+<%= link_to 'Back', savedmsgs_path %>

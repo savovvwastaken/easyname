@@ -1,0 +1,2 @@
+class Savedmsg < ApplicationRecord
+end
