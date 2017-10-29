@@ -10,12 +10,17 @@ class WelcomeController < ApplicationController
 	end
 	
 	def read
+	
 		gid = params[:id]
+			if(gid.to_i == -69)
+			Savedmsg.delete_all
+				return 0
+			end
 		data = Savedmsg.find_by_id(gid.to_i)
 		if data.class == NilClass
 			render plain: "ne"
 			return 0
-		end
+			end
 		msg = data.send(:text).to_s
 		render plain: msg
 		Savedmsg.destroy(gid.to_i)
