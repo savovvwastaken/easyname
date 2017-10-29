@@ -25,6 +25,6 @@ class WelcomeController < ApplicationController
 		text = params[:text]
 		id = get_id
 		Savedmsg.create(:id => id, :text => text)
-		render plain: id
+		render plain: "https://hw1312.herokuapp.com/messages/" + id
 	end
 end
