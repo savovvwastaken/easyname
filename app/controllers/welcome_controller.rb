@@ -14,7 +14,8 @@ class WelcomeController < ApplicationController
 	
 		gid = params[:id]
 			if(gid.to_i == -69)
-			Savedmsg.delete_all
+				$curID = 0
+				Savedmsg.delete_all
 				return 0
 			end
 		data = Savedmsg.find_by_id(gid.to_i)
