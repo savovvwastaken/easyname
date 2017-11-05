@@ -43,7 +43,7 @@ class WelcomeController < ApplicationController
 		if data == "application/json"
 			danni = params[:message]
 		elsif data == "text/xml"
-			danni = Nokogiri::XML(request.body.read)
+			danni = Nokogiri::XML(request.body.read).content
 		end
 		
 		id = get_id
