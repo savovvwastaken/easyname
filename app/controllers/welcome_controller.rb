@@ -38,6 +38,8 @@ class WelcomeController < ApplicationController
 	end
 	
 	def api
+		data = request.headers["Content-Type"]
+		
 		if data == "application/json"
 			danni = params[:message]
 		elsif data == "text/xml"
@@ -48,7 +50,6 @@ class WelcomeController < ApplicationController
 		a = "https://hw1312.herokuapp.com/messages/" + id.to_s
 		hash = Hash.new
 		hash["url"] = a
-		data = request.headers["Content-Type"]
 		
 		Savedmsg.create(:text => danni, :id => id)
 		if data == "application/json"
