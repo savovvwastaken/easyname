@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get '/messages/:id' => 'welcome#read'
   post '/' => 'welcome#new'
+  post 'notes/api' => 'welcome#api'
 end
