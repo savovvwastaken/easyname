@@ -7,6 +7,7 @@ def get_id
 end
 
 class WelcomeController < ApplicationController
+	protect_from_forgery unless: -> {request.format.json? }
 	def index
 	end
 	
