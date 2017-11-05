@@ -1,3 +1,4 @@
+require 'nokogiri'
 $curID = 0
 
 def get_id
@@ -32,5 +33,26 @@ class WelcomeController < ApplicationController
 		Savedmsg.create(:id => id, :text => text)
 		a = "https://hw1312.herokuapp.com/messages/" + id.to_s
 		render plain: a
+	end
+	
+	def api
+		if data == "application/json"
+			danni = params[:message]
+		elsif data == "text/xml"
+			danni = Nokogiri::XML.fragment(require.body.read).content
+		end
+		
+		id = get_id
+		a = "https://hw1312.herokuapp.com/messages/" + id.to_s
+		hash = Hash.new
+		hash["url"] = a
+		data = request.headers["Content-Type"]
+		
+		Savedmsg.create(:text => danni, :id => id)
+		if data == "application/json"
+			render json: hash
+		elsif data == "text/xml"
+			render xml: hash
+		end
 	end
 end
